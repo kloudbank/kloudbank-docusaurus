@@ -88,7 +88,7 @@ const config = {
             position: 'left',
             label: 'Complex',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
@@ -146,6 +146,10 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+  plugins: [[require.resolve('docusaurus-lunr-search'), {
+    languages: ['en', 'ko'],
+  }]],
 };
 
 module.exports = config;
