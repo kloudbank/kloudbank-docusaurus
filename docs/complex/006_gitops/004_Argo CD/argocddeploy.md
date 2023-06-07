@@ -9,7 +9,7 @@ sidebar: 'auto'
 author: 'heyKim'
 ---
 
-![ArgoCD GitOps CD](./images/argocd-flow.png)
+![ArgoCD GitOps CD](../images/argocd-flow.png)
 * Jenkins 구성
     * Jenkins 설치 및 Plugin setting
     * Pipeline 구성(Github, Docker Hub 연동 등)
@@ -143,16 +143,16 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 ## ArgoCD CLI
 ### 접속
-![ArgoCD 메인화면](./images/argocd-cli-connect.png)
+![ArgoCD 메인화면](../images/argocd-cli-connect.png)
 
 ## ArgoCD 설정
 ### 둘러보기
-![ArgoCD 메인화면](./images/argocd-main.png)
+![ArgoCD 메인화면](../images/argocd-main.png)
 ArgoCD는 `Application`라는 CRD(Custom Resource Definition)를 제공한다. Application은 Kubernetes resources 묶음으로 배포를 책임진다.
 ### Application 생성
-![ArgoCD App생성1](./images/argocd-application-create-general.png)
-![ArgoCD App생성2](./images/argocd-application-create-source-destination.png)
-![ArgoCD App생성3](./images/argocd-application-create-kustomize.png)
+![ArgoCD App생성1](../images/argocd-application-create-general.png)
+![ArgoCD App생성2](../images/argocd-application-create-source-destination.png)
+![ArgoCD App생성3](../images/argocd-application-create-kustomize.png)
 * Application Name: App의 이름을 적는다.
 * Project: 프로젝트를 선택하는 필드. 쿠버네티스의 namespace와 비슷한 개념으로 여러 App을 논리적인 project로 구분하여 관리할 수 있다.
 * Sync Policy: Git 저장소의 변경 사항을 어떻게 sync할지 결정. Auto는 자동으로 Git 저장소의 변경사항을 운영에 반영하고 Manual은 사용자가 버튼 클릭 혹은 API를 통해 직접 운영 반영을 해야함.
@@ -163,10 +163,10 @@ ArgoCD는 `Application`라는 CRD(Custom Resource Definition)를 제공한다. A
 * Namespace: 쿠버네티스 클러스터의 어느 네임스페이스에 배포할지를 결정
 * Kubernetes manifests Tool 선택: Kubernetes manifest를 정의할 tool 을 선택하고 설정 정보를 입력한다.
 
-![ArgoCD App생성4](./images/argocd-application-after-creat.png)
+![ArgoCD App생성4](../images/argocd-application-after-creat.png)
 ArgoCD Application 생성 후, 동기화 이전이라 `OutOfSync`상태
 
-![ArgoCD App생성5](./images/argocd-application-deploy-change.png)
+![ArgoCD App생성5](../images/argocd-application-deploy-change.png)
 config repo에서 Deployment의 namespace을 변경하니 이를 감지하여 동기화가 필요한 상태임을 표시해줌
 ### ArgoCD Image Updater
 * Argo CD로 관리되는 k8s workload의 container image를 자동으로 업데이트 해주는 기능. 
@@ -202,11 +202,11 @@ argocd-image-updater.argoproj.io/write-back-method: git
 ## ArgoCD를 통한 HCP CI/CD 개선
 1. 간편한 Config 수정
 * As-Is
-![](./images/argocd-modify-config-asis.png)
+![](../images/argocd-modify-config-asis.png)
 설정 정보가 Docker Image 안에 포함되어 있어 properties가 정적으로 관리됨.  
 config가 application 소스와 분리되어 있지 않아 config 수정을 위해 빌드 과정을 거쳐야함.
 * To-Be
-![](./images/argocd-modify-config-tobe.png)
+![](../images/argocd-modify-config-tobe.png)
 CI/CD를 분리하고, properties를 ConfigMap으로 생성하는 kustomize 기능을 활용하여 동적으로 관리.
     *  ConfigMap repository 예시.
     ```bash
@@ -242,24 +242,24 @@ CI/CD를 분리하고, properties를 ConfigMap으로 생성하는 kustomize 기�
     ```
 2. 빌드없는 배포(CD) 가능
 * As-Is
-![argocd-cd-asis](./images/argocd-cd-asis.png)
+![argocd-cd-asis](../images/argocd-cd-asis.png)
 현재 모니터링 구축 시, filebeat, metricbeat, prometheus, elasticsearch 등을 `kubectl apply -f` or `helm install` 명령어를 통해 수동으로 설치하여 변경 관리와 버전 관리가 부재하고 Human error 발생이 쉬움
 * To-Be  
 git repo에 정의한 상태와 클러스터가 동일하게 유지되어 관리가 용이함.
 
 3. Multi Cluster 관리 용이
 * As-Is
-![](./images/argocd-multi-cluster-asis.png)
+![](../images/argocd-multi-cluster-asis.png)
 수백개의 클러스터에 metricbeat를 설치하려면 수동으로 수백번 설치해줘야하여 비효율적임
 
 * To-Be
-![](./images/argocd-multi-cluster-tobe.png)
+![](../images/argocd-multi-cluster-tobe.png)
 argocd를 사용하면 새로운 클러스터가 추가되더라도 간단하게 클러스터 설정만 추가해주면 별도의 처리 없이 멀티 클러스터에 동일한 형상을 유지할 수 있음.
 
 4. Helm Chart Repo 없이 helm 배포
 * As-Is
-![](./images/argocd-helm-deploy-asis.png)
+![](../images/argocd-helm-deploy-asis.png)
 ICP Helm Chart Repo를 사용 중으로 ICP가 아닌 Native K8S Cluster에 helm 배포를 위한 대체 방안이 필요함.
 * To-Be
-![](./images/argocd-helm-deploy-tobe.png)
+![](../images/argocd-helm-deploy-tobe.png)
 ArgoCD 기반 helm 배포를 통해 helm chart repo를 별도로 두지 않고 사용가능함.

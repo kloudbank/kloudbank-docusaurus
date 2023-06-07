@@ -1,6 +1,7 @@
 ---
 title: Basics
 date: 2021-08-16
+sidebar_position: 1
 tags:
 - argocd
 categories: 
@@ -9,7 +10,7 @@ sidebar: 'auto'
 author: 'heyKim'
 ---
 
-![ArgoCD GitOps CD](./images/gitops-argocd.png)
+![ArgoCD GitOps CD](../images/gitops-argocd.png)
 ArgoCD란 GitOps 스타일의 배포를 지원하는 CD도구이다.  
 Git 저장소의 내용과 쿠버네티스 클러스터를 동기화해주는 역할을 하는 에이전트이다. (GitOps Operator)
 ## ArgoCD Core Concept
@@ -33,14 +34,14 @@ Git에 모든 배포에 관련된 정보가 정의되어 있어야 하며, 각 �
 
 ## 배포방식 비교
 ### 기존의 CI/CD 배포 방식
-![기존의 CI/CD 배포 방식](./images/argocd-asis-cicd.png)
+![기존의 CI/CD 배포 방식](../images/argocd-asis-cicd.png)
 1. 개발자가 소스코드를 commit/push
 2. Jenkins와 같은 CI 툴에 의해 테스트/빌드 pipeline 수행한다.
 3. 생성된 컨테이너 이미지를 컨테이너 저장소에 업로드한다.
 4. CI/CD 툴은 업로드한 컨테이너의 이미지 정보를 참조해서 kubernetes에 어플리케이션을 배포한다. **(push 방식)**
 
 ### ArgoCD 적용 CI/CD 방식
-![ArgoCD 적용 CI/CD 방식](./images/argocd-tobe-cicd.png)
+![ArgoCD 적용 CI/CD 방식](../images/argocd-tobe-cicd.png)
 1. (동일) 개발자가 소스코드를 commit/push
 2. (동일) Jenkins와 같은 CI 툴에 의해 테스트/빌드 pipeline 수행한다.
 3. (동일) 생성된 컨테이너 이미지를 컨테이너 저장소에 업로드한다.
@@ -56,7 +57,7 @@ Git에 모든 배포에 관련된 정보가 정의되어 있어야 하며, 각 �
 ## ArgoCD의 Key Component
 
 - Reconciliation Cycle Overview
-![Reconciliation Cycle Overview](./images/argo-reconcile-cycle.png)
+![Reconciliation Cycle Overview](../images/argo-reconcile-cycle.png)
 
 1. API Server  
 ArgoCD는 다른 외부 시스템과 interact 하기 위한 API를 제공하는 API Server가 있다. API Server는 Application, repository, cluster credential, 인증 및 권한 부여 등을 관리한다.
@@ -81,7 +82,7 @@ deployment.apps/argocd-server                   1/1     1            1
 
 
 ### Key objects/resources in Argo CD
-![](./images/argocd-key-objects.png)
+![](../images/argocd-key-objects.png)
 1. Application 
 * ArgoCD는 Application이라는 k8s custom resource definition(CRD)를 통해서 배포하고자 하는 application의 instance를 나타낸다.
 * 이 ArgoCD Application 안에 생성할 application의 K8s manifest 파일이 있는 git repo, 배포하고자 하는 k8s server, namsepace 등등의 정보를 정의한다.

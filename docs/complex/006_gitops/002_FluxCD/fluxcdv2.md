@@ -18,7 +18,7 @@ AWS Managed Service 로 제공되는 CI Pipeline 을 사용하여 Docker image �
 
 - 구성 Architecture
 
-![](./images/flux-eks-architecture.png)
+![](../images/flux-eks-architecture.png)
 
 
 ## Prerequisite
@@ -508,7 +508,7 @@ FluxCD 에서 제공하는 monitoring dashboard.
   - reconciliations / sources 의 list-up 및 상태
   - reconciliatino, soure acquisition 의 수행 시간
 
-![](./images/flux-dashboard-cluster.png)
+![](../images/flux-dashboard-cluster.png)
 
 - Flux Control Plane
 : FluxCD control plane 으로 생성된, k8s object monitoring
@@ -516,4 +516,4 @@ FluxCD 에서 제공하는 monitoring dashboard.
   - Controller 의 Kubernetes API request 상태 확인
   - reconciliation request 상태 확인 (Kustomization, HelmRelease)
 
-![](./images/flux-dashboard-control-plane.png)
+![](../images/flux-dashboard-control-plane.png)

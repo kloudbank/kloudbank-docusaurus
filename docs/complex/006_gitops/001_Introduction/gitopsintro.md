@@ -1,6 +1,7 @@
 ---
 title: GitOps
 date: 2021-07-27
+sidebar_position: 1
 tags:
 - fluxcd
 - argocd
@@ -28,10 +29,10 @@ author: 'heyKim'
 ---
 ## GitOps 배포방식
 * Push 방식
-![pusj 배포방식](./images/normal_cicd_flow.png)
+![pusj 배포방식](../images/normal_cicd_flow.png)
 
 * Pull 방식
-![pull 배포방식](./images/gitops_cicd_flow.png)
+![pull 배포방식](../images/gitops_cicd_flow.png)
 
 ## Basics
 <https://www.gitops.tech/#what-is-gitops>

@@ -1,6 +1,7 @@
 ---
 title: Basics
 date: 2021-07-27
+sidebar_position: 1
 tags:
 - fluxcd
 categories: 

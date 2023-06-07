@@ -333,6 +333,7 @@ Spring Boot Application 의 application property 를 configmap volume 으로 mou
 9. Deployment rollout restart 수행.
 10. Alert provider 에 의해 slack message 수신.
 
+```plantuml
 @startuml kubernetes
 
 footer Kubernetes Plant-UML
@@ -419,7 +420,7 @@ Rel(loadtest, svc, " ")
 Rel(alert, slack, " ")
 
 @enduml
-
+```
 
 ### Test Result
 
@@ -454,7 +455,7 @@ account-primary               2
 ```
 
 - Canary release alert 수신
-<img src="./images/2021-07-28-14-46-57.png" width="40%" height="40%" />
+<img src="../images/2021-07-28-14-46-57.png" width="40%" height="40%" />
 
 
 #### 2. Canary analysis metric threshold check 실패
@@ -493,14 +494,14 @@ Events:
 - Flagger Dashboard 를 통한 Monitoring
 : appmesh 의 prometheus metric 을 활용. Flagger 도 마찬가지.
 
-![](./images/2021-07-28-14-58-10.png)
+![](../images/2021-07-28-14-58-10.png)
 
 - AWS X-ray Monitoring
 : 실제로 pod 간에 traffic 분산이 잘되었는지 확인하고, 어떤 pod 에서 error 가 발생하였는지 확인.
 : 아래 컴포넌트의 error 발생율 만큼, 붉은 색으로 표시됨.
 <u>_traffic 분산 처리가 정말로 잘 되는지 의심스러워서 확인해 봄,,_</u>
 
-![](./images/2021-07-28-15-06-22.png)
+![](../images/2021-07-28-15-06-22.png)
 
 
 #### 3. Canary analysis metric threshold 조정
@@ -542,8 +543,7 @@ Events:
 - Slack message 수신
 : 시작 message, 정상 종료 message 수신
 
-<img src="./images/2021-07-28-15-18-39.png" width="40%" height="40%" />
-
+![](../images/2021-07-28-15-18-39.png)
 
 
 ## Ingress Canary Release
